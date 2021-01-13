@@ -15,35 +15,50 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $author;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private string $author;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $email;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private \DateTime $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Conference::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $conference;
+    private Conference $conference;
 
-    public function getId(): ?int
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $photoFilename;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private string $text;
+
+    public function __toString(): string
+    {
+        return (string) $this->getEmail();
+    }
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): string
     {
         return $this->author;
     }
@@ -55,7 +70,7 @@ class Comment
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -79,14 +94,38 @@ class Comment
         return $this;
     }
 
-    public function getConference(): ?Conference
+    public function getConference(): Conference
     {
         return $this->conference;
     }
 
-    public function setConference(?Conference $conference): self
+    public function setConference(Conference $conference): self
     {
         $this->conference = $conference;
+
+        return $this;
+    }
+
+    public function getPhotoFilename(): ?string
+    {
+        return $this->photoFilename;
+    }
+
+    public function setPhotoFilename(?string $photoFilename): self
+    {
+        $this->photoFilename = $photoFilename;
+
+        return $this;
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }
