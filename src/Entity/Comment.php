@@ -41,7 +41,7 @@ class Comment
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $photoFilename;
+    private ?string $photoFilename;
 
     /**
      * @ORM\Column(type="text")
@@ -82,12 +82,12 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt( \DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 
