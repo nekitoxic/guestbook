@@ -17,6 +17,7 @@
         "symfony/framework-bundle": "5.0.*",
         "symfony/monolog-bundle": "^3.6",
         "symfony/proxy-manager-bridge": "5.0.*",
+        "symfony/string": "5.0.*",
         "symfony/twig-bundle": "^5.0",
         "symfony/yaml": "5.0.*",
         "twig/extra-bundle": "^2.12|^3.0",
